@@ -1,10 +1,9 @@
-package com.helion.blockchain.block;
+package com.helion.blockchain.models;
 
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.List;
-
-import com.helion.blockchain.transaction.Transaction;
+import java.util.Map;
+import java.util.Objects;
 
 public class Block implements Serializable{
 
@@ -14,13 +13,13 @@ public class Block implements Serializable{
 	private Instant timestamp;
 	private String lastHash;
 	private String hash;
-	private List<Transaction> transactions;
+	private Map<String, Transaction> transactions;
 	private int nonce;
 	private int difficulty;
 	
 	public Block() {}
 	
-	public Block(Instant timestamp, String lastHash, String hash, List<Transaction> transactions, int nonce,
+	public Block(Instant timestamp, String lastHash, String hash, Map<String,Transaction> transactions, int nonce,
 			int difficulty) {
 		
 		this.timestamp = timestamp;
@@ -55,11 +54,11 @@ public class Block implements Serializable{
 		this.hash = hash;
 	}
 
-	public List<Transaction> getTransactions() {
+	public Map<String,Transaction> getTransactions() {
 		return transactions;
 	}
 
-	public void setTransactions(List<Transaction> transactions) {
+	public void setTransactions(Map<String,Transaction> transactions) {
 		this.transactions = transactions;
 	}
 
@@ -78,9 +77,24 @@ public class Block implements Serializable{
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(hash, lastHash);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Block other = (Block) obj;
+		return Objects.equals(hash, other.hash) && Objects.equals(lastHash, other.lastHash);
+	}
 	
 	
-	
-	
-	
+
 }

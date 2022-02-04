@@ -78,7 +78,7 @@ public class Crypto {
 		
 	}
 	
-	public static boolean verifySignature(String text, String sign, String publicKey) throws InvalidKeySpecException, InvalidKeyException{
+	public static boolean verifySignature(String text, String sign, String publicKey) throws InvalidKeyException, InvalidKeySpecException{
 		boolean verified = false;
 
 		try {

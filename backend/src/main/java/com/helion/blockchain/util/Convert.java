@@ -29,4 +29,70 @@ public class Convert {
 	    }
 	    return bytes;
 	}
+	
+	public static String hexToBin(String sHexString) {
+        String sBinString = "";
+
+        for (int i = 0; i < sHexString.length(); i++)
+            sBinString += hexCharToBin(sHexString.charAt(i));
+        return sBinString;
+    }
+
+    public static String hexCharToBin(char c) {
+        String sBinStr = "";
+
+        c = Character.toUpperCase(c);
+
+        switch (c) {
+        case '0':
+            sBinStr = "0000";
+            break;
+        case '1':
+            sBinStr = "0001";
+            break;
+        case '2':
+            sBinStr = "0010";
+            break;
+        case '3':
+            sBinStr = "0011";
+            break;
+        case '4':
+            sBinStr = "0100";
+            break;
+        case '5':
+            sBinStr = "0101";
+            break;
+        case '6':
+            sBinStr = "0110";
+            break;
+        case '7':
+            sBinStr = "0111";
+            break;
+        case '8':
+            sBinStr = "1000";
+            break;
+        case '9':
+            sBinStr = "1001";
+            break;
+        case 'A':
+            sBinStr = "1010";
+            break;
+        case 'B':
+            sBinStr = "1011";
+            break;
+        case 'C':
+            sBinStr = "1100";
+            break;
+        case 'D':
+            sBinStr = "1101";
+            break;
+        case 'E':
+            sBinStr = "1110";
+            break;
+        case 'F':
+            sBinStr = "1111";
+            break;
+        }
+        return sBinStr;
+    }
 }
